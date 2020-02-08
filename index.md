@@ -20,3 +20,4 @@ including laser cutting and 3D printing. Digital modelling skills developed in t
 - [Contents](./contents)
 - [Class 1](./class-1)
 - [Class 2](./class-2)
+- [Class 3](./class-3)
