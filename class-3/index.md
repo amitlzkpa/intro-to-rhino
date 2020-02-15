@@ -2,9 +2,8 @@
 
 Introduction to NURBS surfaces and exploration of surface creation methods.  
 
-- [Slides](./Class 3 Slides.pdf)
-- [Upload Link](https://drive.google.com/drive/folders/1LRtngyZjU-AtcYwquuLYh8yzBr5c1mWv?usp=sharing)
-- [Template File](./Visualization_Template_3.3dm)
+- [Slides](./Spiral_Stair.pdf)
+- [Spiral Stair](./spiral stairs.3dm)
 
 # Topics
 ```
