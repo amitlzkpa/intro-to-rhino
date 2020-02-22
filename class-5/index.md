@@ -22,4 +22,4 @@ Practice surface modelling and editing methods.  Introduction to primitive volum
 ```
 
 # Practice Assignment
-![Nijntje](./class-5/nijntje.jpeg)
+![Nijntje](./nijntje.jpeg)
