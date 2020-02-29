@@ -3,6 +3,8 @@
 
 Volume editing methods and preparation of object contours for laser cutting.
 
+- [Upload Link](https://drive.google.com/drive/folders/1BP_lOfW-gjE02VErRaeKZ5tJmhbaIWoS?usp=sharing)
+- [Grasshopper File](./Countour_numbering.gh)
 
 # Topics
 ```
