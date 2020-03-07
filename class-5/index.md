@@ -28,7 +28,7 @@ Practice surface modelling and editing methods.  Introduction to primitive volum
 
 __Example__
 
-<div id="canvas" class="container" style="height: 320px;"></div>
+<div id="canvas" style="width:100%; height: 320px;"></div>
 
 <script type="text/javascript" src="/viewer/resources/three.min.js"></script>
 <script type="text/javascript" src="/viewer/resources/OrbitControls.js"></script>
@@ -72,9 +72,9 @@ __Example__
 
         renderer = new THREE.WebGLRenderer({antialias: true});
         renderer.setPixelRatio( window.devicePixelRatio );
-        renderer.setSize( window.innerWidth, window.innerHeight );
         var canvas = document.getElementById("canvas");
         canvas.appendChild( renderer.domElement );
+        renderer.setSize( canvas.offsetWidth, canvas.offsetHeight );
 
         controls = new THREE.OrbitControls( camera, renderer.domElement  );
 
