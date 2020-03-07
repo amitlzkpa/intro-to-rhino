@@ -61,16 +61,17 @@ __Example__
     var scene, camera, renderer, controls;
 
     function init(){
+        var canvas = document.getElementById("canvas");
+        canvas.appendChild( renderer.domElement );
+
         scene = new THREE.Scene();
         scene.background = new THREE.Color(1,1,1);
-        camera = new THREE.PerspectiveCamera( 45, window.innerWidth/window.innerHeight, 1, 10000 );
+        camera = new THREE.PerspectiveCamera( 45, canvas.offsetWidth/canvas.offsetHeight, 1, 10000 );
         camera.position.set(900, 450, 900)
 
         renderer = new THREE.WebGLRenderer({antialias: true});
         renderer.setPixelRatio( window.devicePixelRatio );
-        renderer.setSize( window.innerWidth, window.innerHeight );
-        var canvas = document.getElementById("canvas");
-        canvas.appendChild( renderer.domElement );
+        renderer.setSize( canvas.offsetWidth, canvas.offsetHeight );
 
         controls = new THREE.OrbitControls( camera, renderer.domElement  );
 
