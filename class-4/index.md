@@ -24,7 +24,7 @@ Continue to work on modelling the light bulb using the surface creation methods 
 
 __Example__
 
-<div id="canvas" style="width: 100%; height: 320px;"></div>
+<div id="canvas" style="width: 100%; height: 480px;"></div>
 
 <script type="text/javascript" src="/viewer/resources/three.min.js"></script>
 <script type="text/javascript" src="/viewer/resources/OrbitControls.js"></script>
