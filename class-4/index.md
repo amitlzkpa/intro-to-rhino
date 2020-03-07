@@ -26,9 +26,9 @@ __Sample__
 
 <div id="canvas"></div>
 
-<script type="text/javascript" src="./resources/three.min.js"></script>
-<script type="text/javascript" src="./resources/OrbitControls.js"></script>
-<script type="text/javascript" src="./resources/rhino3dm.js"></script>
+<script type="text/javascript" src="/viewer/resources/three.min.js"></script>
+<script type="text/javascript" src="/viewer/resources/OrbitControls.js"></script>
+<script type="text/javascript" src="/viewer/resources/rhino3dm.js"></script>
 <script type="text/javascript">
 
     var modelURL = '/viewer/models/RhinoI_Bulb.3dm';
