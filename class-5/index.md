@@ -66,7 +66,6 @@ __Example__
 
     function init(){
         var canvas = document.getElementById("canvas");
-        canvas.appendChild( renderer.domElement );
 
         scene = new THREE.Scene();
         scene.background = new THREE.Color(1,1,1);
@@ -76,6 +75,8 @@ __Example__
         renderer = new THREE.WebGLRenderer({antialias: true});
         renderer.setPixelRatio( window.devicePixelRatio );
         renderer.setSize( canvas.offsetWidth, canvas.offsetHeight );
+        
+        canvas.appendChild( renderer.domElement );
 
         controls = new THREE.OrbitControls( camera, renderer.domElement  );
 
