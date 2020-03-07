@@ -10,7 +10,30 @@
         <script type="text/javascript" src="./resources/OrbitControls.js"></script>
         <script type="text/javascript" src="./resources/rhino3dm.js"></script>
         <script type="text/javascript">
-            let fetchPromise = fetch('./models/test1.3dm');
+
+
+            // https://html-online.com/articles/get-url-parameters-javascript/
+            function getUrlVars() {
+                var vars = {};
+                var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+                    vars[key] = value;
+                });
+                return vars;
+            }
+
+            function getUrlParam(parameter, defaultvalue){
+                var urlparameter = defaultvalue;
+                if(window.location.href.indexOf(parameter) > -1){
+                    urlparameter = getUrlVars()[parameter];
+                }
+                return urlparameter;
+            }
+
+            var modelURL = getUrlParam('modelURL', './models/test1.3dm');
+
+            console.log(modelURL);
+
+            let fetchPromise = fetch(modelURL);
 
             rhino3dm().then(async m => {
                 let rhino = m;
