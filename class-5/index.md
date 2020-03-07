@@ -68,7 +68,7 @@ __Example__
         scene = new THREE.Scene();
         scene.background = new THREE.Color(1,1,1);
         camera = new THREE.PerspectiveCamera( 45, window.innerWidth/window.innerHeight, 1, 10000 );
-        camera.position.set(600, -300, 600)
+        camera.position.set(900, 450, 900)
 
         renderer = new THREE.WebGLRenderer({antialias: true});
         renderer.setPixelRatio( window.devicePixelRatio );
