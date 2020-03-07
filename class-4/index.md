@@ -22,7 +22,9 @@ Practice using surface methods to model sprial stair with railing and (energy sa
 # Practice Assignment
 Continue to work on modelling the light bulb using the surface creation methods reviewed in class.  Break down the model into three sections - top (the helical bulb elements); middle (cylindrical encasement); bottom (threaded end).  Refer to the tutorial in Slides linked above for reference.
 
-<div id="canvas" style="width: 720px; height: 480px;"></div>
+__Example__
+
+<div id="canvas" style="width: 100%; height: 320px;"></div>
 
 <script type="text/javascript" src="/viewer/resources/three.min.js"></script>
 <script type="text/javascript" src="/viewer/resources/OrbitControls.js"></script>
@@ -46,7 +48,6 @@ Continue to work on modelling the light bulb using the surface creation methods 
         let material = new THREE.MeshNormalMaterial();
 
         let objects = doc.objects();
-        console.log(objects);
         for (let i = 0; i < objects.count; i++) {
             let mesh = objects.get(i).geometry();
             if(mesh instanceof rhino.Mesh) {
@@ -57,14 +58,13 @@ Continue to work on modelling the light bulb using the surface creation methods 
         }
     });
 
-    // BOILERPLATE //
     var scene, camera, renderer, controls;
 
     function init(){
         scene = new THREE.Scene();
         scene.background = new THREE.Color(1,1,1);
         camera = new THREE.PerspectiveCamera( 45, window.innerWidth/window.innerHeight, 1, 10000 );
-        camera.position.set(1300,-650,1300)
+        camera.position.set(600, -300, 600)
 
         renderer = new THREE.WebGLRenderer({antialias: true});
         renderer.setPixelRatio( window.devicePixelRatio );
