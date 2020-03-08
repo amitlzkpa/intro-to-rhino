@@ -27,3 +27,11 @@
 ---
 ![Object 7](./object-images/o7_1.jpg)
 ![Object 7](./object-images/o7_2.jpg)
+
+---
+---
+## Completed Samples
+![Clip](./object-images/clip.png)
+![Lid](./object-images/lid.png)
+![Massager](./object-images/massager.png)
+
