@@ -1,7 +1,12 @@
-## Box Array
+
+--
+
+## Rectangular Array
 Arrays objects along X, Y and Z axes.  
 <video width="100%" controls>
-  <source src="./box-array.mp4" type="video/mp4">
+  <source src="./rectangular-array.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
+
+--
 
