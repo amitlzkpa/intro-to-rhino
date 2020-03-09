@@ -1,4 +1,9 @@
 
+## Toolbar Locations
+
+All array commands can be accessed from the command line and the toolbar.
+![Array toolbar locations](./toolbar-locations.png)
+
 ---
 
 ## Rectangular Array
