@@ -1,5 +1,5 @@
 
---
+---
 
 ## Rectangular Array
 Arrays objects along X, Y and Z axes.  
@@ -8,5 +8,14 @@ Arrays objects along X, Y and Z axes.
   Your browser does not support the video tag.
 </video>
 
---
+---
+
+## Polar Array
+Arrays objects along a circle.  
+<video width="100%" controls>
+  <source src="./polar-array.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+---
 
