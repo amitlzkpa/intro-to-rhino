@@ -14,22 +14,22 @@
 
             // https://html-online.com/articles/get-url-parameters-javascript/
             function getUrlVars() {
-                var vars = {};
-                var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+                let vars = {};
+                let parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
                     vars[key] = value;
                 });
                 return vars;
             }
 
             function getUrlParam(parameter, defaultvalue){
-                var urlparameter = defaultvalue;
+                let urlparameter = defaultvalue;
                 if(window.location.href.indexOf(parameter) > -1){
                     urlparameter = getUrlVars()[parameter];
                 }
                 return urlparameter;
             }
 
-            var modelURL = getUrlParam('modelURL', './models/test1.3dm');
+            let modelURL = getUrlParam('modelURL', './models/test.3dm');
 
             console.log(modelURL);
 
@@ -45,21 +45,77 @@
 
                 THREE.Object3D.DefaultUp = new THREE.Vector3(0,0,1)
                 init();
-                let material = new THREE.MeshNormalMaterial();
 
                 let objects = doc.objects();
                 for (let i = 0; i < objects.count; i++) {
-                    let mesh = objects.get(i).geometry();
-                    if(mesh instanceof rhino.Mesh) {
-                        // convert all meshes in 3dm model into threejs objects
-                        let threeMesh = meshToThreejs(mesh, material);
+                    let geom = objects.get(i).geometry();
+                    // console.log(geom);
+                    if(geom instanceof rhino.Point) {
+                        let p = geom.location;
+                        let spGeom = new THREE.SphereGeometry( 5, 32, 32 );
+                        let spMat = new THREE.MeshBasicMaterial( {color: 0x000000} );
+                        let sphere = new THREE.Mesh(spGeom, spMat);
+                        sphere.position.set(p[0], p[1], p[2]);
+                        sphere.scale.set(0.2, 0.2, 0.2);
+                        scene.add(sphere);
+                    }
+                    if(geom instanceof rhino.LineCurve) {
+                        let p1 = geom.pointAtStart;
+                        let p2 = geom.pointAtEnd;
+                        let pA = new THREE.Vector3(p1[0], p1[1], p1[2]);
+                        let pB = new THREE.Vector3(p2[0], p2[1], p2[2]);
+                        let lineMaterial = new THREE.LineBasicMaterial({color: 0x000000});
+                        let lineGeometry = new THREE.BufferGeometry().setFromPoints([pA, pB]);
+                        let line = new THREE.Line(lineGeometry, lineMaterial);
+                        scene.add(line);
+                    }
+                    if(geom instanceof rhino.PolylineCurve) {
+                        let pl = geom.ToPolyline();
+                        let len = pl.length;
+                        let pts = [];
+                        for(let i=0; i<pl.count; i++) {
+                            let pp = pl.pointAt(i);
+                            let p = new THREE.Vector3(pp[0], pp[1], pp[2]);
+                            pts.push(p);
+                        }
+                        let lineMaterial = new THREE.LineBasicMaterial({color: 0x000000});
+                        let lineGeometry = new THREE.BufferGeometry().setFromPoints(pts);
+                        let line = new THREE.Line(lineGeometry, lineMaterial);
+                        scene.add(line);
+                    }
+                    if(geom instanceof rhino.NurbsCurve) {
+                        let dom = geom.domain[1];
+                        let divs = 100;
+                        let pts = [];
+                        for(let i=0; i<divs; i++) {
+                            let pp = geom.pointAt((i/divs) * dom);
+                            let p = new THREE.Vector3(pp[0], pp[1], pp[2]);
+                            pts.push(p);
+                        }
+                        let lineMaterial = new THREE.LineBasicMaterial({color: 0x000000});
+                        let lineGeometry = new THREE.BufferGeometry().setFromPoints(pts);
+                        let line = new THREE.Line(lineGeometry, lineMaterial);
+                        scene.add(line);
+                    }
+                    // if(geom instanceof rhino.Extrusion) {
+                    //     let p1 = geom.pathStart;
+                    //     let p2 = geom.pathEnd;
+                    //     let pTan = geom.pathTangent;
+                    //     console.log(`Extrusion with path starting at [${p1}] and ending at [${p2}] and tangent ${pTan}`);
+                    // }
+                    if(geom instanceof rhino.Mesh) {
+                        let meshMaterial = new THREE.MeshNormalMaterial();
+                        let loader = new THREE.BufferGeometryLoader();
+                        let meshGeometry = loader.parse(geom.toThreejsJSON());
+                        let threeMesh = new THREE.Mesh(meshGeometry, meshMaterial);
                         scene.add(threeMesh);
                     }
+                    // console.log('---------------');
                 }
             });
 
             // BOILERPLATE //
-            var scene, camera, renderer, controls;
+            let scene, camera, renderer, controls;
 
             function init(){
                 scene = new THREE.Scene();
@@ -70,7 +126,7 @@
                 renderer = new THREE.WebGLRenderer({antialias: true});
                 renderer.setPixelRatio( window.devicePixelRatio );
                 renderer.setSize( window.innerWidth, window.innerHeight );
-                var canvas = document.getElementById("canvas");
+                let canvas = document.getElementById("canvas");
                 canvas.appendChild( renderer.domElement );
 
                 controls = new THREE.OrbitControls( camera, renderer.domElement  );
@@ -79,7 +135,7 @@
                 animate();
             }
 
-            var animate = function () {
+            let animate = function () {
                 requestAnimationFrame( animate );
                 controls.update();
                 renderer.render( scene, camera );
@@ -92,11 +148,6 @@
                 animate();
             }
 
-            function meshToThreejs(mesh, material) {
-                let loader = new THREE.BufferGeometryLoader();
-                var geometry = loader.parse(mesh.toThreejsJSON());
-                return new THREE.Mesh(geometry, material);
-            }
         </script>
     </body>
 </html>
