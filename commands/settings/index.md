@@ -22,3 +22,12 @@ Settings that allow you to change model units.
 </video>
 
 ---
+
+## CPlane Settings
+Settings to change the working plane position and orientation.
+<video width="100%" controls>
+  <source src="./cplane-settings.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+---
