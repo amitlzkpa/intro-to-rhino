@@ -67,3 +67,12 @@ Command to bend objects.
 </video>
 
 ---
+
+## Cage Edit
+Command to modify objects using a cage.
+<video width="100%" controls>
+  <source src="./cage-edit.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+---
